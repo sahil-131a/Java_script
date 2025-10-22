@@ -40,6 +40,11 @@ console.log(typeof age);
 console.log(age);
 */
 
+
+/*
+============================================================================================
+$$ In this peice of code i have learn about the let , var , const keyword 
+============================================================================================
 let age = 5;
 age = 6;
 // you can use let where u know that value must mutate 
@@ -51,3 +56,5 @@ const birthYear = 2005;
 // var keyword is not use now a days to declare the variable bcz it is function scoped
 //--- if u declare the variable using the var keyword then u can use it through out the function 
 // let keyword use to declare the keyword now a days because variable can acess thorout a block not in whole function  
+
+*/
