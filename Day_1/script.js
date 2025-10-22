@@ -20,6 +20,10 @@ let PI = 3.14;
 // we must have to write the variable name very discriptive so that it will be easy to read 
 */
 
+/*
+===================================================================================================
+this code i used to learn the data types 
+===================================================================================================
 let js = true;
 
 console.log(js);
@@ -34,3 +38,4 @@ console.log(typeof age);
 age = 12;
 console.log(typeof age);
 console.log(age);
+*/
