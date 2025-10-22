@@ -14,11 +14,9 @@ let firstName = "sahil"; // this is how the variable is declared in the js
 console.log(firstName);
 let PI = 3.14;
 
-
-
-
 // we must have to write the variable name very discriptive so that it will be easy to read 
 */
+
 
 /*
 ===================================================================================================
@@ -58,3 +56,28 @@ const birthYear = 2005;
 // let keyword use to declare the keyword now a days because variable can acess thorout a block not in whole function  
 
 */
+
+// arithmetic operators and operations 
+const now = 2037;
+const ageSahil = now - 2005;
+const ageSirat = now - 2035;
+console.log(ageSahil , ageSirat);
+
+console.log(ageSahil*2 , ageSahil/10 , ageSirat**3);
+
+const firstName = "Sahil";
+const lastName = "Kharbanda";
+
+console.log(firstName + " " + lastName);
+
+// assignment operators 
+let x = 10 + 5; //15
+x += 10; //25 x = x+10;
+x *= 4; // x = x*4;
+x++; // x= x+1;
+x--;
+x--;
+console.log(x);
+
+// comparision operator 
+console.log(ageSahil>ageSirat); // > , < , >= , <= 
