@@ -90,3 +90,21 @@ console.log(x);
 console.log(ageSahil>ageSirat); // > , < , >= , <= 
 */
 
+
+/* 
+===============================================================================
+In this peice of code i have learned about the string and the template literals
+================================================================================ 
+// This is normal string usage  
+const firstName = 'sahil';
+const job = 'student';
+const birthYear = 2005;
+const year = 2025;
+
+const Sahil = "I'm " + firstName +  ", a "+(year-birthYear) + " year old " + job;
+console.log(Sahil);
+
+// This is Template literals
+const SahilNew = `I'm ${firstName} , a ${year-birthYear} year old ${job}`
+console.log(SahilNew);
+*/
