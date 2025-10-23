@@ -113,6 +113,13 @@ console.log(SahilNew);
 */
 
 
+
+/* 
+===============================================================================================
+In this peice if code i have learned about the if-else conditional statements 
+===============================================================================================
+
+
 // if-else control statements 
 const birthYear = 2005;
 let century ;
@@ -123,3 +130,6 @@ else{
     century = 20;
 }
 console.log(century);
+
+
+*/
