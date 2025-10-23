@@ -91,10 +91,13 @@ console.log(ageSahil>ageSirat); // > , < , >= , <=
 */
 
 
-/* 
+
+/*
 ===============================================================================
 In this peice of code i have learned about the string and the template literals
-================================================================================ 
+================================================================================
+ 
+
 // This is normal string usage  
 const firstName = 'sahil';
 const job = 'student';
