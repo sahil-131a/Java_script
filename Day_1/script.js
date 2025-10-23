@@ -133,3 +133,15 @@ console.log(century);
 
 
 */
+
+// type coversion
+const input = "1991";
+console.log(input + 18); // this will give u the result of 199118
+console.log(Number(input) + 18); //this will give u the result of 2009 Number() this function covert string to number 
+console.log(Number("sahil"));// this will give u the result of Nan which means not a valid number 
+console.log(String(1991)); // this is how u convert anything into string 
+
+// type coercion
+console.log("hi i am " + 20 + "years old student");
+console.log("30" - "10");// this will give output 20
+console.log("2" * "3");// this will give output of 6
