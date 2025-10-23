@@ -134,6 +134,11 @@ console.log(century);
 
 */
 
+/*
+============================================================================================
+Here i learned about the type conversion and the type coercion
+============================================================================================
+
 // type coversion
 const input = "1991";
 console.log(input + 18); // this will give u the result of 199118
@@ -145,3 +150,5 @@ console.log(String(1991)); // this is how u convert anything into string
 console.log("hi i am " + 20 + "years old student");
 console.log("30" - "10");// this will give output 20
 console.log("2" * "3");// this will give output of 6
+
+*/
