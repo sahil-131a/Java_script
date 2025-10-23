@@ -111,3 +111,15 @@ console.log(Sahil);
 const SahilNew = `I'm ${firstName} , a ${year-birthYear} year old ${job}`
 console.log(SahilNew);
 */
+
+
+// if-else control statements 
+const birthYear = 2005;
+let century ;
+if (birthYear>2000){
+    century = 21;
+}
+else{
+    century = 20;
+}
+console.log(century);
