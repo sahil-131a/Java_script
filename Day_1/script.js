@@ -57,6 +57,13 @@ const birthYear = 2005;
 
 */
 
+
+/*
+===========================================================================
+$$ In this peice of code i have learned about operators 
+===========================================================================
+
+
 // arithmetic operators and operations 
 const now = 2037;
 const ageSahil = now - 2005;
@@ -81,3 +88,5 @@ console.log(x);
 
 // comparision operator 
 console.log(ageSahil>ageSirat); // > , < , >= , <= 
+*/
+
