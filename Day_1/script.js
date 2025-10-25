@@ -153,7 +153,10 @@ console.log("2" * "3");// this will give output of 6
 
 */
 
-
+/*
+==================================================================================================
+$$ In this peice of code I have learned about the Falsy values 
+===================================================================================================
 
 // we are having 5 falsy values : 0 , "" , NaN , undefined , null:- basically they give false when we try to convert them into a boolean
 
@@ -182,3 +185,5 @@ if(height){
 }
 // as we know that undefined give falsy value so in the if block where condition is checked it give false value 
 // so else block run and if we define height equal to 0 then it also give false and else block run 
+
+*/
