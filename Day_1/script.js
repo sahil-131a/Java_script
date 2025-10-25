@@ -152,3 +152,33 @@ console.log("30" - "10");// this will give output 20
 console.log("2" * "3");// this will give output of 6
 
 */
+
+
+
+// we are having 5 falsy values : 0 , "" , NaN , undefined , null:- basically they give false when we try to convert them into a boolean
+
+console.log(Boolean(0));
+console.log(Boolean(""));
+console.log(Boolean(null));
+console.log(Boolean(NaN));
+console.log(Boolean(undefined));
+console.log(Boolean("sahil"));
+console.log(Boolean(3));
+
+// we never do this in real like explicitly converting into boolean it is always implicit (coercion)
+
+const money = 10;
+if(money){
+    console.log("yeah u have money !");
+} else{
+    console.log("ooooo u dont have money");
+}
+
+let height ;
+if(height){
+    console.log("Height is defined");
+}else{
+    console.log("Height is not defined");
+}
+// as we know that undefined give falsy value so in the if block where condition is checked it give false value 
+// so else block run and if we define height equal to 0 then it also give false and else block run 
