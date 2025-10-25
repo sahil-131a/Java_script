@@ -187,3 +187,44 @@ if(height){
 // so else block run and if we define height equal to 0 then it also give false and else block run 
 
 */
+
+
+
+let age = "18";
+if(age === 18)
+{
+    console.log("you are a adult");
+}
+else{
+    console.log("not adult");
+}
+// above u use strict equality having (===) three equal to  sign 
+/* 
+    When u use strict equality this did not perform any type coercion but 
+    when u use loose equality it will perform the type coercion which will 
+    effect the result
+*/
+if(age == 18){
+    console.log("congo u r an adult");
+}else{
+    console.log("not adult");
+}
+// abouve u use the loose equality having (==) two equal to sign
+
+let favNum = Number(prompt("what is ur fav number ? "));
+if(favNum === 18){
+    console.log("Yeah 18 is matched");
+}
+else if(favNum === 20){
+    console.log("lucky 20 is matched");
+}
+else if (favNum === 22){
+    console.log("22 is matched");
+}
+else{
+    console.log("No match found.");
+}
+
+if(favNum !== 19){// this is strict not equal to operator 
+    console.log("why not 19?");
+}
