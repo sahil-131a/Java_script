@@ -190,6 +190,11 @@ if(height){
 
 
 
+/*
+====================================================================================================
+Here I learned about the equality operator in detail 
+====================================================================================================
+
 let age = "18";
 if(age === 18)
 {
@@ -199,11 +204,11 @@ else{
     console.log("not adult");
 }
 // above u use strict equality having (===) three equal to  sign 
-/* 
-    When u use strict equality this did not perform any type coercion but 
-    when u use loose equality it will perform the type coercion which will 
-    effect the result
-*/
+ 
+   // When u use strict equality this did not perform any type coercion but 
+   // when u use loose equality it will perform the type coercion which will 
+   // effect the result
+
 if(age == 18){
     console.log("congo u r an adult");
 }else{
@@ -228,3 +233,5 @@ else{
 if(favNum !== 19){// this is strict not equal to operator 
     console.log("why not 19?");
 }
+
+*/
