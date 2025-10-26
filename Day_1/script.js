@@ -235,3 +235,27 @@ if(favNum !== 19){// this is strict not equal to operator
 }
 
 */
+
+
+
+
+const hasDrivingLicense = true;
+const hasGoodVision = true;
+
+console.log(hasDrivingLicense && hasGoodVision);
+console.log(hasDrivingLicense || hasGoodVision);
+console.log(!hasDrivingLicense);
+
+if (hasDrivingLicense && hasGoodVision){
+    console.log("U can drive");
+}else{
+    console.log("No u can't drive ");
+}
+const isTired = true;
+
+if(hasDrivingLicense && hasGoodVision && !isTired){
+    console.log("you can drive the car ");
+}
+else{
+    console.log("you can not drive ");
+}
