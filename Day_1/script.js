@@ -238,6 +238,12 @@ if(favNum !== 19){// this is strict not equal to operator
 
 
 
+/*
+
+========================================================================
+Here i learned about the logical operator 
+========================================================================
+
 
 const hasDrivingLicense = true;
 const hasGoodVision = true;
@@ -259,3 +265,6 @@ if(hasDrivingLicense && hasGoodVision && !isTired){
 else{
     console.log("you can not drive ");
 }
+
+
+*/
