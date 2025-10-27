@@ -270,6 +270,11 @@ else{
 */
 
 
+/*
+===========================================================================
+Here I learned aboout the switch case
+=========================================================================== 
+
 const day = "Monday";
 
 switch (day) {
@@ -295,3 +300,6 @@ switch (day) {
     default:
         console.log("day does not exist");        
 }
+
+*/
+
