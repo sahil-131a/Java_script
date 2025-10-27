@@ -268,3 +268,30 @@ else{
 
 
 */
+
+
+const day = "Monday";
+
+switch (day) {
+    case "Monday" :
+        console.log("do js");
+        break;
+    case "Tuesday" :
+        console.log("Do java");
+        break;       
+    case "Wednesday":
+    case "Thrusday":
+        console.log("do Dsa");
+        break;
+    case "Friday":
+        console.log("do Practice");
+        break;
+    case "Saturday":
+        console.log("Do js");
+        break;
+    case "Sunday":
+        console.log("Take rest");
+        break;
+    default:
+        console.log("day does not exist");        
+}
