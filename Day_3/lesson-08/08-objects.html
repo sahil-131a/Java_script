@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        /*
+        // objects
+        const product = {
+            name: 'ball' , 
+            cost: 20
+        }
+
+        console.log(product);
+        console.log(product.name);
+        
+        // results undefined because property doesn't exist 
+        console.log(product.num);
+
+        //how we can add new property 
+        product.newproperty = true;
+        console.log(product);
+        // delete any property 
+        delete product.newproperty;
+        console.log(product);
+
+        // object is also a type 
+        console.log(typeof product);
+        */
+
+        // Bracket notation for objects
+
+        const product2 = {
+            name: 'shirt',
+            ['discounted-price']: 200, 
+            'ratings':{
+                stars: 4.8,
+                count:100
+            },
+            fun: function f1(){
+                console.log('function inside object');
+            }   
+        };
+
+        console.log(product2['name']);
+        console.log(product2['discounted-price']);
+        console.log(product2['ratings']['stars']);
+        console.log(product2.ratings.count);
+
+        product2.fun();
+        const jsonString = JSON.stringify(product2);
+        console.log(jsonString);
+
+        console.log(JSON.parse(jsonString));
+
+
+        // Auto boxing 
+        console.log('hello'.length);
+        console.log('hello'.toUpperCase());
+
+        const product = {
+            name: 'jean',
+            price: 1200
+        };
+
+        // destructing the object 
+        const {name , price} = product;
+        console.log(name);
+        console.log(price);
+
+        console.log(product);
+
+
+        const object3 = {
+            //name : name
+            name,
+            /*method: function func(){
+                //console.log("method");
+            }*/
+            method(){
+                console.log("method");
+            }
+
+        }
+    </script>
+</body>
+</html>
