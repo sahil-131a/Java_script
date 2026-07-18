@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom-exercise</title>
+</head>
+<body>
+    <button>9a</button>
+    <button class="second-button">9b</button>
+    <button
+        onclick="
+        result('heads');" 
+        >heads</button>
+    <button
+        onclick=" result('tails');
+        ">tails</button>
+    <p class="js-result"></p>
+    <script>
+        function result(move){
+            document.querySelector('.js-result').innerHTML = `you choose ${move}`
+        }
+        console.log(document.querySelector('button'));
+        document.querySelector('.second-button').innerHTML = '9b - done!';
+    </script>
+</body>
+</html>
