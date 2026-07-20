@@ -5,7 +5,17 @@ function updatedList(){
     let todoHtml = '';
 
     for(let i = 0 ; i < result.length; i++){
-        todoHtml += `<p>${result[i]}</p> `;
+        todoHtml += `
+       
+        <div>${result[i].name}</div>
+        <div >${result[i].doDate}</div>
+        <button class = "delete-todo-button" onclick = "
+            result.splice(${i} , 1)
+            updatedList();
+            "
+        >Delete</button>
+        
+         `
     }
 
     document.querySelector('.js-div')
@@ -14,11 +24,21 @@ function updatedList(){
 
 
 function addTodo(){
-    const text = document.querySelector('.js-input');
-    const name = text.value;
-    result.push(name);
-    console.log(result);
-    text.value = "";
+    const nameInput = document.querySelector('.js-input');
+    const doDateInput = document.querySelector('.js-date');
+    
+    const name = nameInput.value;
+    const doDate = doDateInput.value;
+
+    result.push({
+        //name: name,
+        //doDate: doDate
+        name,
+        doDate
+    });
+    
+    nameInput.value= "";
+    doDateInput.value = "";
 
     updatedList();
 }
