@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Functions</title>
+</head>
+<body>
+    <script>
+        // functions are the type of values in the js 
+       /*
+        function greetings(){
+            console.log("hello func");
+        }
+
+        greetings();
+        */
+       /*
+       // this is called the annonymous function
+        const func1 = function (){
+            console.log("hello");
+        };
+
+        const obj1 = {
+            num: 3,
+            fun: function greet(){
+                console.log("hello 1");
+            }
+        }
+        obj1.fun();
+
+
+        // passing function into another function
+        function run(param){
+            param();
+        }
+
+        run(function (){
+            console.log("hello 2");
+        });
+        */
+
+        /*
+        setTimeout(function(){
+            console.log("timeOut")
+        } , 4000);
+
+        console.log("not time out");
+
+        setInterval(function (){
+            console.log("interval")
+        } , 2000);
+        */
+
+        [
+            "Sahil",
+            "priyanshu"
+        ].forEach(function (value , index){
+            console.log(value , index);
+        })
+    </script>
+</body>
+</html>
