@@ -6,7 +6,19 @@
     <title>Advance Functions</title>
 </head>
 <body>
+    <!--<button class="js-button">click</button>-->
     <script>
+        /*
+
+        const buttonElement = document.querySelector('.js-button');
+        const eventFunction = () => {
+            console.log("hello")
+        }
+
+        buttonElement.addEventListener('click' , eventFunction );
+        buttonElement.removeEventListener('click' , eventFunction);
+        */
+
         // functions are the type of values in the js 
        /*
         function greetings(){
@@ -52,12 +64,48 @@
         } , 2000);
         */
 
+        /*
         [
             "Sahil",
-            "priyanshu"
+            "priyanshu",
+            "tushal"
         ].forEach(function (value , index){
+            if(value === "priyanshu"){
+                return;
+            }
             console.log(value , index);
         })
+        */
+
+        /*
+        // Arrow function
+        const arrowFunction = () =>{
+            console.log('hello');
+        };
+
+        arrowFunction();
+
+        const oneLine = () => 2+3;
+        console.log(oneLine());
+        */
+
+        // filter and map function 
+
+        console.log([1 , 2 , 3 , 4].filter((value , index) => {
+            /*if(value > 1){
+                return true;
+            }
+            else{
+                return false;
+            }*/
+
+            return value > 2;
+
+        }));
+
+        console.log([1 , 2, 3].map((value) => {
+            return value*2;
+        }));
     </script>
 </body>
 </html>
