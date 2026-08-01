@@ -69,6 +69,8 @@ export function loadProducts(fun){
       return new Product(productDetails);
     });
     console.log("load products");
+
+    
     fun();
   })
 
@@ -76,7 +78,7 @@ export function loadProducts(fun){
   xhr.send();
   
 }
-loadProducts();
+
 
 /*
 export const products = [
