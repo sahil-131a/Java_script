@@ -6,30 +6,59 @@
     <title>Cart Quantity</title>
 </head>
 <body>
+    <!--
+     CONCEPT: INLINE EVENT HANDLERS & VARIABLE MUTATION
+     - 'onclick' is an HTML attribute that runs JavaScript when a button is clicked.
+     - The JS code inside onclick="" runs in the GLOBAL scope, so it can access
+       variables declared in <script> tags.
+     - Template literals (backtick strings) let us embed variables with ${variableName}.
+     - Operators used here:
+         ++    → increment by 1 (cartQuantity++ is same as cartQuantity = cartQuantity + 1)
+         += 2  → add 2 to current value (shorthand for cartQuantity = cartQuantity + 2)
+         = 0   → reset the variable to 0
+     - This demonstrates how a GLOBAL variable (cartQuantity) acts as shared STATE
+       that multiple buttons can read and modify.
+    -->
+
+    <!-- This button READS the current value and logs it (doesn't change it) -->
     <button onclick="
         console.log(`Cart quantity: ${cartQuantity}`);
         ">Show Quantity
     </button>
+
+    <!-- This button INCREMENTS by 1 using the ++ operator -->
     <button onclick="
         cartQuantity ++;
         console.log(`Cart quantity: ${cartQuantity}`);
         ">Add to Cart
     </button>
+
+    <!-- This button adds 2 using the += compound assignment operator -->
     <button onclick="
         cartQuantity += 2;
         console.log(`Cart quantity: ${cartQuantity}`);
         ">+2
     </button>
+
+    <!-- This button adds 3 using += -->
     <button onclick="
         cartQuantity += 3;
         console.log(`Cart quantity: ${cartQuantity}`);
         ">+3</button>
+
+    <!-- This button RESETS the cart by assigning 0 directly -->
     <button onclick="
         cartQuantity = 0;
         console.log('Cart was reset');
         console.log(`Cart quantity: ${cartQuantity}`);
         ">Reset Cart</button>
+
     <script>
+        /*
+         The variable is declared here in the global scope.
+         'let' is used because we know the quantity WILL CHANGE as users click buttons.
+         Initialized to 0 — the cart starts empty.
+        */
         let cartQuantity = 0;
     </script>
 </body>

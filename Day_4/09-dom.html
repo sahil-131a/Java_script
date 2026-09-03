@@ -8,14 +8,46 @@
 <body>
     <button class="js-button">second button</button>
     <script>
-        console.log(document.querySelector('.js-button').innerHTML);
+        /*
+         CONCEPT: THE DOM (Document Object Model)
+         - The DOM is a TREE STRUCTURE that the browser creates from your HTML.
+         - Each HTML element becomes a "node" in this tree (an object in memory).
+         - JavaScript can ACCESS and MODIFY these nodes to change the page dynamically.
+         - The 'document' object is the ENTRY POINT to the DOM — it represents the whole page.
+
+         CONCEPT: document.querySelector()
+         - querySelector('.className') → finds the FIRST element matching the CSS selector.
+         - You can use any CSS selector: '.class', '#id', 'tagName', etc.
+         - Returns the DOM element as a JavaScript object with many properties.
+        */
+
+        // .innerHTML reads the HTML content INSIDE an element
+        console.log(document.querySelector('.js-button').innerHTML);  // "second button"
+
+        /*
+         CONCEPT: Modifying DOM Elements
+         - .innerHTML = 'new content' → REPLACES the content inside the element.
+         - This is how JavaScript makes web pages INTERACTIVE and DYNAMIC.
+         - NOTE: The assignment below returns the assigned VALUE ('changed'), not the element.
+        */
         const jsElement = document.querySelector('.js-button')
-            .innerHTML = 'changed';
-        console.log(jsElement);
+            .innerHTML = 'changed';     // Changes button text to 'changed'
+        console.log(jsElement);          // Logs 'changed' (the assigned value, not the element)
 
-        console.log(document.title);
-        document.title = 'changed';
+        /*
+         CONCEPT: document.title
+         - document.title reads or sets the page title (shown in the browser tab).
+         - The DOM exposes many page-level properties through the 'document' object.
+        */
+        console.log(document.title);      // Reads the current title: "DOM"
+        document.title = 'changed';       // Changes the browser tab title to "changed"
 
+        /*
+         CONCEPT: document.body.innerHTML
+         - document.body.innerHTML can REPLACE the entire body's HTML content.
+         - WARNING: This destroys ALL existing elements in the body!
+         - After replacing, old element references become invalid (null).
+        */
         //document.body.innerHTML ='<button>hello</button>';
         //console.log(document.querySelector('button'));
 

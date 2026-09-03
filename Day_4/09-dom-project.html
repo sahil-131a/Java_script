@@ -6,6 +6,16 @@
     <title>Dom-project</title>
 </head>
 <body>
+    <!--
+     CONCEPT: INTERACTIVE DOM PROJECTS
+     - This page combines multiple DOM concepts:
+       1. Reading user input from <input> elements
+       2. Updating page content dynamically
+       3. Handling keyboard events (Enter key)
+       4. Toggling button states
+    -->
+
+    <!-- PROJECT 1: YOUTUBE SUBSCRIBE BUTTON (Toggle) -->
     <p>
         Youtube Subscribe Button
     </p>
@@ -14,10 +24,18 @@
         Subscribe
     </button>
 
+    <!-- PROJECT 2: AMAZON SHIPPING CALCULATOR -->
     <p>Amazon Shipping Calculator</p>
     <p>Order under $40 =+ $10 shipping</p>
     <p>Orders over $40 = FREE shipping</p>
 
+    <!--
+     CONCEPT: HANDLING KEYBOARD EVENTS
+     - The 'onkeydown' attribute fires every time a key is pressed while the input is focused.
+     - 'event' is automatically passed by the browser — it contains info about the key press.
+     - event.key tells you WHICH key was pressed (e.g., 'Enter', 'a', 'Escape').
+     - This lets us trigger actions when the user presses Enter instead of clicking a button.
+    -->
     <input type="text" placeholder="Cost of order" class="input-value" onkeydown="
         handleKeyDown(event);
         ">
@@ -25,27 +43,52 @@
         Calculate();
         " >Calculate</button>
 
+    <!-- This <p> element starts empty — JS will fill it with the calculated price -->
     <P class="js-price"></P>
 
     <script>
+        /*
+         handleKeyDown(event) — checks if the pressed key is 'Enter'.
+         If so, calls Calculate() — same as clicking the Calculate button.
+         CONCEPT: Functions calling other functions for code reuse.
+        */
         function handleKeyDown(event){
             if(event.key === 'Enter'){
                 Calculate();
             }
         }
+
+        /*
+         Calculate() — reads the input value, applies shipping logic, and displays the result.
+         CONCEPT: Reading input values from the DOM
+         - document.querySelector('.input-value') → gets the <input> element.
+         - .value → gets the TEXT the user typed (always a STRING).
+         - Number() → converts that string to a number for math operations.
+         - Then we update the .innerHTML of another element to show the result.
+        */
         function Calculate(){
             const inputElement = document.querySelector('.input-value');
-            let cost = Number(inputElement.value);
+            let cost = Number(inputElement.value);  // Convert string input to number
 
             if(cost < 40){
-                cost = cost + 10;
+                cost = cost + 10;   // Add $10 shipping for orders under $40
             }
+            // Orders >= $40 get free shipping (no extra charge)
 
+            // Update the page to show the total cost
             document.querySelector('.js-price')
                 .innerHTML = `$${cost}`; 
     
         }
         
+        /*
+         subscribe() — toggles the button text between "Subscribe" and "Subscribed".
+         CONCEPT: DOM Toggle Pattern
+         - Read the current state (.innerText)
+         - Based on current state, switch to the opposite state
+         - .innerText reads/sets the TEXT content (not HTML, just plain text)
+         - This creates a simple toggle/switch behavior with a single function.
+        */
         function subscribe(){
             const buttonElement = document.querySelector('.js-subscribe-button');
 

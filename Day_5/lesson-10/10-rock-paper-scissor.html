@@ -2,9 +2,16 @@
 <html>
   <head>
     <title>Rock Paper Scissors</title>
+    <!--
+     CONCEPT: STYLED RPS GAME — CSS + DOM + DYNAMIC IMAGES
+     - This version adds a full dark-theme UI with styled buttons and images.
+     - Emoji images are used instead of text for the moves.
+     - Dynamic image sources via template literals: `images/${playermove}-emoji.png`
+     - The CSS creates a polished, app-like appearance.
+    -->
     <style>
       body{
-        background-color: rgb(25 , 25 , 25);
+        background-color: rgb(25 , 25 , 25);  /* Dark background */
         color: white;
         font-family: Arial;
       }
@@ -12,13 +19,14 @@
         font-size: 30px;
         font-weight: bold;
       }
+      /* Circular buttons with border — creates a nice emoji button effect */
       .move-button{
         background-color: rgb(25 , 25 ,25);
         padding: 30px;
         border-color: white;
         border-style: solid;
         border-width: 3px;
-        border-radius: 80px;
+        border-radius: 80px;   /* Very high border-radius = circle/pill shape */
         margin-right: 8px;
         cursor: pointer;
       }
@@ -43,6 +51,12 @@
   </head>
   <body>
     <p class="game-title">Rock Paper Scissors</p>
+
+    <!--
+     CONCEPT: IMAGES INSIDE BUTTONS
+     - <img> tags inside <button> make the buttons display images instead of text.
+     - The image source path is relative to the HTML file location.
+    -->
     <button class="move-button" onclick="
       playgame('rock');
     "><img src="images/rock-emoji.png" class="move-image"></button>
@@ -54,6 +68,7 @@
     <button class="move-button" onclick="
       playgame('scissors');
     "><img src="images/scissors-emoji.png" class="move-image"></button>
+
     <p class="js-result result"></p>
     <p class="js-moves moves"></p>
     <p class="js-score score"></p>
@@ -118,6 +133,16 @@
 
         localStorage.setItem('score' , JSON.stringify(score));
         document.querySelector('.js-result').innerHTML = result;
+
+        /*
+         CONCEPT: DYNAMIC IMAGE SOURCES WITH TEMPLATE LITERALS
+         - `images/${playermove}-emoji.png` builds the image filename dynamically.
+         - If playermove is 'rock', the src becomes 'images/rock-emoji.png'.
+         - This is powerful: instead of writing separate HTML for each move,
+           we use the variable to construct the correct path.
+         - The innerHTML is set to an <img> tag as a string — the browser parses
+           this HTML string and renders the actual image.
+        */
         document.querySelector('.js-moves').innerHTML = `You <img src="images/${playermove}-emoji.png" class="move-image"> <img src="images/${computerMove}-emoji.png " class="move-image" >Computer`
         updateScore();
       }

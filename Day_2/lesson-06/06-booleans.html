@@ -7,37 +7,64 @@
 </head>
 <body>
     <script>
+        /*
+         CONCEPT: BOOLEANS, IF-ELSE, LOGICAL OPERATORS & TERNARY OPERATOR
+         - Booleans have only two values: true and false.
+         - Comparison operators (>, <, >=, <=, ===, !==) return booleans.
+        */
+
+        // Comparison: 3 > 4 evaluates to false
         console.log(3>4);
-        //if - statements 
+
+        /*
+         IF-ELSE STATEMENTS — execute different code based on a condition.
+         if (condition) → runs when condition is true
+         else → runs when condition is false
+        */
         if(true){
-            console.log("hello");
+            console.log("hello");  // Always runs because condition is literally 'true'
         }
         else{
             console.log('hyy');
         }
 
+        /*
+         ELSE IF — chain multiple conditions together.
+         JS checks conditions top-to-bottom and runs the FIRST one that's true.
+         Once a match is found, all remaining else-if/else blocks are SKIPPED.
+        */
         const age = 17
 
         if(age>=18){
-            console.log('you can drive');
+            console.log('you can drive');          // Runs if age is 18 or more
         }
         else if(age>16){
-            console.log('Almost eligible to drive')
+            console.log('Almost eligible to drive') // Runs if age is 17 (between 16 and 18)
         }
         else{
-            console.log('you can not drive');
+            console.log('you can not drive');       // Runs if age is 16 or less
         }
 
-        // logical operator 
-        console.log(true && true);
-        console.log(true && false);
-        console.log(0.2 >= 0 && 0.2 <1/3 );
+        /*
+         LOGICAL OPERATORS — combine multiple conditions:
+         && (AND) → true only when BOTH sides are true
+         || (OR)  → true when AT LEAST ONE side is true
+         !  (NOT) → flips true→false, false→true
+        */
+        console.log(true && true);   // true  — both are true
+        console.log(true && false);  // false — one side is false
+        console.log(0.2 >= 0 && 0.2 <1/3 ); // true — both conditions are met (0.2 is between 0 and 0.33)
 
-        console.log(true || false);
-        console.log(!true);
+        console.log(true || false);  // true  — at least one is true
+        console.log(!true);          // false — NOT flips true to false
 
-        //ternary operator
-        console.log(true ? 'false': true ) 
+        /*
+         TERNARY OPERATOR — a shorthand for if-else in a single line.
+         Syntax: condition ? valueIfTrue : valueIfFalse
+         It's an EXPRESSION (returns a value), unlike if-else which is a STATEMENT.
+         Useful for quick conditional assignments or inline values.
+        */
+        console.log(true ? 'false': true ) // Logs 'false' (the string) because condition is true
     </script> 
 </body>
 </html>

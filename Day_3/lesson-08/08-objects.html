@@ -8,79 +8,143 @@
 <body>
     <script>
         /*
-        // objects
+         CONCEPT: OBJECTS IN JAVASCRIPT
+         - An object is a collection of KEY-VALUE pairs (called "properties").
+         - Objects group RELATED data together (e.g., a product has a name AND a cost).
+         - Created with curly braces: { key: value, key2: value2 }
+         - Each key is a PROPERTY NAME, each value can be ANY type (string, number, boolean, etc.)
+        */
+
+        /*
+        // DOT NOTATION — the most common way to access object properties
         const product = {
             name: 'ball' , 
             cost: 20
         }
 
-        console.log(product);
-        console.log(product.name);
+        console.log(product);        // Logs the entire object
+        console.log(product.name);   // Access the 'name' property → 'ball'
         
-        // results undefined because property doesn't exist 
-        console.log(product.num);
+        // Accessing a property that DOESN'T EXIST returns 'undefined' (not an error)
+        console.log(product.num);    // undefined — 'num' property doesn't exist
 
-        //how we can add new property 
+        // ADDING a new property — just assign it with dot notation
         product.newproperty = true;
-        console.log(product);
-        // delete any property 
-        delete product.newproperty;
-        console.log(product);
+        console.log(product);        // Now has 3 properties: name, cost, newproperty
 
-        // object is also a type 
-        console.log(typeof product);
+        // DELETING a property — use the 'delete' keyword
+        delete product.newproperty;
+        console.log(product);        // Back to 2 properties
+
+        // typeof returns "object" for objects
+        // NOTE: const prevents REASSIGNING the variable, but you CAN still MODIFY the object's properties.
+        console.log(typeof product); // "object"
         */
 
-        // Bracket notation for objects
+        /*
+         CONCEPT: BRACKET NOTATION & ADVANCED OBJECT FEATURES
+         - Bracket notation: object['propertyName'] — works just like dot notation
+         - REQUIRED when property names contain special characters like hyphens:
+             object['discounted-price'] ✓
+             object.discounted-price    ✗ (JS thinks it's subtraction!)
+         - Bracket notation also lets you use VARIABLES to access properties dynamically.
+        */
 
         const product2 = {
             name: 'shirt',
+
+            // Property with special characters MUST use bracket notation to define and access
             ['discounted-price']: 200, 
+
+            // NESTED OBJECTS — objects inside objects (any level of nesting is possible)
             'ratings':{
                 stars: 4.8,
                 count:100
             },
+
+            // METHODS — functions stored as object properties
+            // A method is just a function that belongs to an object.
             fun: function f1(){
                 console.log('function inside object');
             }   
         };
 
-        console.log(product2['name']);
-        console.log(product2['discounted-price']);
-        console.log(product2['ratings']['stars']);
-        console.log(product2.ratings.count);
+        // Bracket notation to access properties
+        console.log(product2['name']);               // 'shirt'
+        console.log(product2['discounted-price']);   // 200 — can't use dot notation here
+        console.log(product2['ratings']['stars']);    // 4.8 — chaining bracket notation
 
-        product2.fun();
+        // Dot notation for nested objects (when property names are simple)
+        console.log(product2.ratings.count);         // 100
+
+        // Calling a METHOD (function inside an object)
+        product2.fun();   // Logs: 'function inside object'
+
+        /*
+         CONCEPT: JSON (JavaScript Object Notation)
+         - JSON.stringify(object) → converts a JS object into a JSON STRING.
+           Used to SAVE data (localStorage, sending to server, etc.)
+         - JSON.parse(jsonString) → converts a JSON string BACK into a JS object.
+           Used to LOAD data back from storage.
+         - JSON looks similar to JS objects but has stricter rules:
+           Keys must be in double quotes, no functions allowed, no trailing commas.
+         - NOTE: Methods (functions) are NOT included in JSON — they get stripped out.
+        */
         const jsonString = JSON.stringify(product2);
-        console.log(jsonString);
+        console.log(jsonString);                      // String version of the object
 
-        console.log(JSON.parse(jsonString));
+        console.log(JSON.parse(jsonString));           // Back to an object
 
 
-        // Auto boxing 
-        console.log('hello'.length);
-        console.log('hello'.toUpperCase());
+        /*
+         CONCEPT: AUTO-BOXING
+         - Primitive values like strings and numbers are NOT objects...
+           but JS temporarily WRAPS them in an object so you can use methods on them.
+         - This is called AUTO-BOXING — JS auto-converts to an object wrapper, 
+           uses the method, then discards the wrapper.
+         - That's why 'hello'.length works — JS wraps "hello" in a String object temporarily.
+        */
+        console.log('hello'.length);          // 5 — auto-boxed to String object
+        console.log('hello'.toUpperCase());   // "HELLO" — String method via auto-boxing
 
+
+        /*
+         CONCEPT: DESTRUCTURING OBJECTS
+         - Destructuring lets you extract properties from an object into separate variables
+           in a single line, instead of writing product.name, product.price separately.
+         - Syntax: const { propertyName1, propertyName2 } = object;
+         - The variable names MUST match the property names in the object.
+         - This creates NEW independent variables — changing them doesn't change the original object.
+        */
         const product = {
             name: 'jean',
             price: 1200
         };
 
-        // destructing the object 
-        const {name , price} = product;
-        console.log(name);
-        console.log(price);
+        // Instead of: const name = product.name; const price = product.price;
+        const {name , price} = product;    // Extracts 'name' and 'price' into variables
+        console.log(name);                 // 'jean'
+        console.log(price);               // 1200
 
-        console.log(product);
+        console.log(product);             // Original object is unchanged
 
 
+        /*
+         CONCEPT: SHORTHAND PROPERTY & METHOD SYNTAX
+         - When a variable name matches the property name, you can use SHORTHAND:
+             { name: name } can be written as just { name }
+         - Methods can also use SHORTHAND:
+             { method: function() { } } can be written as { method() { } }
+         - These are just syntactic sugar — they work exactly the same way.
+        */
         const object3 = {
-            //name : name
-            name,
+            //name : name      ← Old way: property name matches variable name
+            name,               // ← Shorthand: same as name: name
+
             /*method: function func(){
                 //console.log("method");
             }*/
-            method(){
+            method(){           // ← Shorthand method syntax: no need for 'function' keyword
                 console.log("method");
             }
 

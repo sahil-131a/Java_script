@@ -4,10 +4,30 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
+    <!--
+     CONCEPT: ROCK PAPER SCISSORS — Math.random(), NESTED IF-ELSE, TEMPLATE LITERALS
+     - Math.random() returns a random decimal number between 0 (inclusive) and 1 (exclusive).
+       Example values: 0.0, 0.245, 0.678, 0.999 — but NEVER exactly 1.
+     - We divide the range [0, 1) into 3 equal parts to pick rock/paper/scissors:
+       [0, 0.333)    → rock
+       [0.333, 0.666) → paper
+       [0.666, 1)     → scissors
+     - NESTED IF-ELSE: First we determine the computer's move, then we compare
+       the player's move against it to determine the result.
+     - IMPORTANT: Each button has its OWN copy of the logic because we haven't
+       learned functions yet. This leads to DUPLICATED CODE — functions (Day 3)
+       will solve this problem.
+     - alert() shows a popup with the result using template literals.
+    -->
+
     <p>Rock Paper Scissors</p>
+
+    <!-- ROCK BUTTON -->
     <button onclick="
+      // Step 1: Generate a random number between 0 and 1
       const randomNumber = Math.random();
 
+      // Step 2: Use the random number to determine the computer's move
       let computerMove = '';
 
       if (randomNumber >= 0 && randomNumber < 1 / 3) {
@@ -18,19 +38,22 @@
         computerMove = 'scissors';
       }
 
+      // Step 3: Compare player's move (rock) vs computer's move to get the result
       let result = '';
 
       if (computerMove === 'rock') {
         result = 'Tie.';
       } else if (computerMove === 'paper') {
-        result = 'You lose.';
+        result = 'You lose.';           // Paper beats rock
       } else if (computerMove === 'scissors') {
-        result = 'You win.';
+        result = 'You win.';            // Rock beats scissors
       }
 
+      // Step 4: Show the result using alert() with a template literal
       alert(`You picked rock. Computer picked ${computerMove}. ${result}`);
     ">Rock</button>
 
+    <!-- PAPER BUTTON — same logic, different win/lose conditions -->
     <button onclick="
       const randomNumber = Math.random();
 
@@ -47,16 +70,17 @@
       let result = '';
 
       if (computerMove === 'rock') {
-        result = 'You win.';
+        result = 'You win.';            // Paper beats rock
       } else if (computerMove === 'paper') {
         result = 'Tie.';
       } else if (computerMove === 'scissors') {
-        result = 'You lose.';
+        result = 'You lose.';           // Scissors beats paper
       }
 
       alert(`You picked paper. Computer picked ${computerMove}. ${result}`);
     ">Paper</button>
 
+    <!-- SCISSORS BUTTON — same logic, different win/lose conditions -->
     <button onclick="
       const randomNumber = Math.random();
 
@@ -73,9 +97,9 @@
       let result = '';
 
       if (computerMove === 'rock') {
-        result = 'You lose.';
+        result = 'You lose.';           // Rock beats scissors
       } else if (computerMove === 'paper') {
-        result = 'You win.';
+        result = 'You win.';            // Scissors beats paper
       } else if (computerMove === 'scissors') {
         result = 'Tie.';
       }

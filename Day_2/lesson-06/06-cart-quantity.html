@@ -4,10 +4,26 @@
     <title>Cart Quantity</title>
   </head>
   <body>
+    <!--
+     CONCEPT: INPUT VALIDATION WITH IF-STATEMENTS
+     - Before modifying data, we CHECK if the operation is valid.
+     - This prevents the cart from going over 10 or below 0.
+     - alert() shows a popup message to the user — useful for quick feedback.
+     - This is an example of BOUNDARY CHECKING / GUARD CLAUSES:
+       "Before doing the action, check if it's allowed."
+     - Pattern: if (wouldExceedLimit) { alert(); } else { doTheAction(); }
+    -->
+
+    <!-- Show current cart value — just reads, doesn't modify -->
     <button onclick="
       console.log(`Cart quantity: ${cartQuantity}`);
     ">Show Quantity</button>
 
+    <!--
+     ADD BUTTONS: Each checks if adding would exceed the MAX (10).
+     cartQuantity+1 > 10 checks the FUTURE value, not the current one.
+     This way we prevent the add before it happens.
+    -->
     <button onclick="
       if(cartQuantity+1 > 10){
         alert('The Cart is full');
@@ -58,6 +74,11 @@
       }  
     ">+5</button>
 
+    <!--
+     REMOVE BUTTONS: Check if removing would go below the MIN (0).
+     cartQuantity-1 < 0 checks if the result would be negative.
+     This prevents the cart from having a negative quantity.
+    -->
     <!-- vvv This code was changed. vvv -->
     <button onclick="
       if(cartQuantity-1 < 0){
@@ -91,6 +112,7 @@
     ">-3</button>
     <!-- ^^^ This code was changed. ^^^ -->
 
+    <!-- Reset directly sets the value to 0 — no validation needed -->
     <button onclick="
       cartQuantity = 0;
       console.log('Cart was reset.');
@@ -98,6 +120,7 @@
     ">Reset Cart</button>
 
     <script>
+      // Global state variable — starts at 0, shared by all buttons
       let cartQuantity = 0;
     </script>
   </body>

@@ -9,7 +9,16 @@
     <!--<button class="js-button">click</button>-->
     <script>
         /*
+         CONCEPT: addEventListener() & removeEventListener()
+         - addEventListener('event', function) → attaches an event handler to an element.
+         - removeEventListener('event', function) → detaches it.
+         - This is the MODERN WAY to handle events (instead of inline onclick="").
+         - IMPORTANT: To remove a listener, you must pass the EXACT SAME function reference.
+           That's why we store the function in a variable (eventFunction).
+           Anonymous functions can't be removed because you can't reference them again!
+        */
 
+        /*
         const buttonElement = document.querySelector('.js-button');
         const eventFunction = () => {
             console.log("hello")
@@ -19,51 +28,103 @@
         buttonElement.removeEventListener('click' , eventFunction);
         */
 
-        // functions are the type of values in the js 
+
+        /*
+         CONCEPT: FUNCTIONS ARE VALUES IN JAVASCRIPT
+         - In JS, functions are "first-class citizens" — they can be:
+           1. Stored in variables
+           2. Stored in object properties (methods)
+           3. Passed as arguments to other functions (callbacks)
+           4. Returned from other functions
+         - This is one of the most POWERFUL features of JavaScript.
+        */
+
+        /*
+         FUNCTION DECLARATION — the "traditional" way to define a function.
+         These are HOISTED: you can call them BEFORE they're defined in the code.
+        */
        /*
         function greetings(){
             console.log("hello func");
         }
-
         greetings();
         */
+
        /*
-       // this is called the annonymous function
+        CONCEPT: FUNCTION EXPRESSION (Anonymous Functions)
+        - A function WITHOUT a name, stored in a variable.
+        - The variable becomes the function's identifier.
+        - NOT hoisted: you can't call it before the line where it's defined.
+        - Syntax: const myFunc = function() { ... };
+       */
+       /*
+        // this is called the annonymous function
         const func1 = function (){
             console.log("hello");
         };
 
+        // Function as an object METHOD — a function stored inside an object property
         const obj1 = {
             num: 3,
             fun: function greet(){
                 console.log("hello 1");
             }
         }
-        obj1.fun();
+        obj1.fun();   // Calling the method: object.method()
 
 
-        // passing function into another function
+        /*
+         CONCEPT: PASSING FUNCTIONS AS ARGUMENTS (Callbacks)
+         - A "callback" is a function passed to another function to be called later.
+         - The receiving function decides WHEN to call it.
+         - This is the foundation of asynchronous JavaScript!
+        */
+        /*
         function run(param){
-            param();
+            param();    // Calls whatever function was passed in
         }
 
+        // Passing an anonymous function as an argument
         run(function (){
             console.log("hello 2");
         });
         */
 
+
+        /*
+         CONCEPT: setTimeout() and setInterval()
+         - setTimeout(function, delay) → runs the function ONCE after 'delay' milliseconds.
+           The rest of the code continues running immediately (non-blocking/asynchronous).
+         - setInterval(function, interval) → runs the function REPEATEDLY every 'interval' ms.
+           It keeps running until you call clearInterval(intervalId).
+         - Both are ASYNCHRONOUS: they don't block the code below them.
+           That's why "not time out" logs BEFORE "timeOut" — setTimeout waits 4 seconds,
+           but the console.log below it runs immediately.
+        */
         /*
         setTimeout(function(){
-            console.log("timeOut")
+            console.log("timeOut")     // Runs after 4000ms (4 seconds)
         } , 4000);
 
-        console.log("not time out");
+        console.log("not time out");    // Runs IMMEDIATELY — doesn't wait for setTimeout
 
         setInterval(function (){
-            console.log("interval")
+            console.log("interval")     // Runs every 2000ms (2 seconds), forever
         } , 2000);
         */
 
+
+        /*
+         CONCEPT: forEach() — Looping through arrays with a callback
+         - array.forEach(function(value, index) { ... })
+         - Calls the function ONCE for each element in the array.
+         - The callback receives two arguments:
+           1. value → the current element
+           2. index → the current index (0, 1, 2, ...)
+         - forEach does NOT return anything (undefined).
+         - 'return' inside forEach only exits the CURRENT ITERATION (like 'continue' in a for loop),
+           it does NOT exit the entire forEach.
+        */
         /*
         [
             "Sahil",
@@ -71,27 +132,58 @@
             "tushal"
         ].forEach(function (value , index){
             if(value === "priyanshu"){
-                return;
+                return;   // Skips "priyanshu" — like 'continue' in a for loop (doesn't exit forEach)
             }
             console.log(value , index);
+            // Logs: "Sahil" 0, then "tushal" 2 (skips "priyanshu" 1)
         })
         */
 
+
         /*
-        // Arrow function
+         CONCEPT: ARROW FUNCTIONS (=>)
+         - Arrow functions are a SHORTER SYNTAX for writing functions.
+         - Syntax: (parameters) => { function body }
+         - If the body is a SINGLE EXPRESSION, you can skip the { } and 'return':
+           (params) => expression  — automatically returns the expression
+         - Arrow functions don't have their own 'this' — they inherit from the surrounding code.
+           (This matters when you learn about 'this' in OOP.)
+         - Arrow functions are commonly used for callbacks (forEach, addEventListener, etc.)
+        */
+        /*
+        // Arrow function stored in a variable
         const arrowFunction = () =>{
             console.log('hello');
         };
-
         arrowFunction();
 
+        // ONE-LINE arrow function with implicit return
+        // No { }, no 'return' keyword — the expression (2+3) is automatically returned
         const oneLine = () => 2+3;
-        console.log(oneLine());
+        console.log(oneLine());   // 5
         */
 
-        // filter and map function 
 
+        /*
+         CONCEPT: filter() AND map() — Array transformation methods
+
+         filter() — creates a NEW array with only elements that pass a test.
+         - Returns a new array (doesn't modify the original).
+         - The callback must return true (keep element) or false (discard element).
+         - Example: [1,2,3,4].filter(v => v > 2) → [3, 4]
+
+         map() — creates a NEW array by TRANSFORMING each element.
+         - Returns a new array of the SAME LENGTH.
+         - The callback returns the new value for each element.
+         - Example: [1,2,3].map(v => v * 2) → [2, 4, 6]
+
+         BOTH methods:
+         - Do NOT modify the original array (they're "non-destructive").
+         - Return a NEW array.
+         - Are commonly used with arrow functions for clean, readable code.
+        */
         console.log([1 , 2 , 3 , 4].filter((value , index) => {
+            // Long version with explicit if/else (commented out):
             /*if(value > 1){
                 return true;
             }
@@ -99,12 +191,13 @@
                 return false;
             }*/
 
-            return value > 2;
+            // Short version — comparison returns boolean directly
+            return value > 2;    // Keeps 3 and 4 → [3, 4]
 
         }));
 
         console.log([1 , 2, 3].map((value) => {
-            return value*2;
+            return value*2;       // Doubles each element → [2, 4, 6]
         }));
     </script>
 </body>

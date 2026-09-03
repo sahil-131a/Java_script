@@ -12,7 +12,21 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
+    <!--
+     CONCEPT: USING OBJECTS FOR STATE + localStorage + FUNCTIONS
+     - This version improves the RPS game by:
+       1. Using an OBJECT to group related data (win, lose, tie scores).
+       2. Using FUNCTIONS to eliminate duplicated code.
+       3. Using localStorage to PERSIST data even after the page is refreshed.
+    -->
+
     <p>Rock Paper Scissors</p>
+
+    <!--
+     Now buttons just call playgame() with the player's move as an argument.
+     This eliminates ALL the duplicated code from the previous version (lesson 06).
+     CONCEPT: Functions make code DRY (Don't Repeat Yourself).
+    -->
     <button onclick="
       playgame('rock');
     ">Rock</button>
@@ -25,6 +39,10 @@
       playgame('scissors');
     ">Scissors</button>
 
+    <!--
+     RESET BUTTON: Manually sets each score property to 0 and removes from localStorage.
+     localStorage.removeItem('score') deletes the saved data so next page load starts fresh.
+    -->
     <button onclick="
       score.win = 0;
       score.lose = 0;
@@ -34,17 +52,40 @@
 
 
     <script>
+      /*
+       CONCEPT: localStorage + JSON + || (OR) for DEFAULT VALUES
+
+       localStorage.getItem('score') → retrieves the saved score string from browser storage.
+       JSON.parse() → converts that JSON string back into a JavaScript object.
+
+       The || (OR) operator provides a DEFAULT VALUE:
+       - If localStorage has data → JSON.parse() returns the saved object (truthy) → uses it.
+       - If localStorage is empty → JSON.parse(null) returns null (falsy) → uses the default object.
+       This is called the "default value pattern" — very common in JavaScript!
+      */
       let score = JSON.parse(localStorage.getItem('score')) || {
         win: 0,
         lose:0,
         tie:0
       };
 
-      
+      /*
+       CONCEPT: FUNCTIONS — Extracting reusable logic
+
+       playgame(playermove) — takes the player's choice as a PARAMETER.
+       This single function handles ALL three buttons, eliminating code duplication.
+       The function:
+       1. Gets the computer's move (from another function)
+       2. Determines the result with nested if-else
+       3. Updates the score object
+       4. Saves to localStorage
+       5. Shows the result via alert()
+      */
       function playgame(playermove){
-        const computerMove = pickComputerMove();
+        const computerMove = pickComputerMove();  // Calling another function — code reuse!
         let result = '';
 
+        // Nested if-else: Outer checks player's move, inner checks computer's move
         if(playermove === 'rock'){
           if (computerMove === 'rock'){
             result = 'Tie.';
@@ -70,6 +111,8 @@
             result = 'Tie.';
           }
         }
+
+        // Update the score OBJECT based on the result
         if(result === 'You win.'){
           score.win += 1;
         }
@@ -80,12 +123,26 @@
           score.tie += 1;
         }
 
+        /*
+         CONCEPT: localStorage — Persisting data in the browser
+         - localStorage.setItem(key, value) → saves data as a STRING in the browser.
+         - JSON.stringify(object) → converts the score object to a JSON string for storage.
+         - Data in localStorage survives page refreshes and browser restarts.
+         - Each website has its own isolated localStorage (can't access other sites' data).
+        */
         localStorage.setItem('score' , JSON.stringify(score));
 
         alert(`You picked ${playermove}. Computer picked ${computerMove}. ${result}
 Win: ${score.win} Lose: ${score.lose} Tie: ${score.tie} `);
 
       }
+
+      /*
+       pickComputerMove() — a separate function that returns the computer's random choice.
+       CONCEPT: Functions can RETURN values. This function generates a random move
+       and RETURNS it so playgame() can use it.
+       Separating this logic makes the code modular and easier to understand.
+      */
       function pickComputerMove(){
         const randomNumber = Math.random();
 
@@ -98,7 +155,7 @@ Win: ${score.win} Lose: ${score.lose} Tie: ${score.tie} `);
         } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
           computerMove = 'scissors';
         }
-        return computerMove;
+        return computerMove;  // Returns the move to the caller
       }
       
     </script>

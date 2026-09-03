@@ -7,16 +7,31 @@
 </head>
 <body>
     <script>
+        /*
+         CONCEPT: VARIABLES & BASIC OPERATIONS
+         - 'let' declares a variable that can be reassigned later.
+         - Variables store values in memory so we can reuse them.
+         - The + operator adds numbers together (arithmetic addition).
+         - 'typeof' operator returns a STRING telling you the data type of a value.
+             typeof 10      → "number"
+             typeof "hello" → "string"
+         - JS automatically knows the type based on the value assigned (dynamic typing).
+        */
+
+        // Declaring two number variables
         let a = 10;
         let b = 3;
 
+        // Using the + operator to add two numbers, then logging the result
         console.log(a+b);
 
+        // Declaring a string variable — strings are wrapped in quotes
         let var1 = "hello"
         console.log(var1);
 
-        console.log(typeof a);
-        console.log(typeof var1);
+        // 'typeof' tells us the data type of the value stored in the variable
+        console.log(typeof a);    // "number" — because a holds 10
+        console.log(typeof var1); // "string" — because var1 holds "hello"
     </script>
 </body>
 </html>

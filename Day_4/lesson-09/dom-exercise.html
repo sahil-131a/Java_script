@@ -6,8 +6,23 @@
     <title>dom-exercise</title>
 </head>
 <body>
+    <!--
+     CONCEPT: DOM EXERCISE — querySelector with different selectors
+     - querySelector('button') → selects the FIRST <button> on the page (by tag name).
+     - querySelector('.class-name') → selects the first element with that CSS class.
+     - You can select elements by tag, class, ID, or any CSS selector.
+    -->
+
+    <!-- This button has NO class — can only be selected by tag name -->
     <button>9a</button>
+
+    <!-- This button has a class — can be selected specifically by '.second-button' -->
     <button class="second-button">9b</button>
+
+    <!--
+     Inline onclick calls a function and passes the player's choice as an argument.
+     The result is displayed in the .js-result paragraph below.
+    -->
     <button
         onclick="
         result('heads');" 
@@ -15,12 +30,28 @@
     <button
         onclick=" result('tails');
         ">tails</button>
+
+    <!-- Empty paragraph that gets filled by JS when a button is clicked -->
     <p class="js-result"></p>
+
     <script>
+        /*
+         result(move) — updates the paragraph to show the user's choice.
+         CONCEPT: Using functions + DOM to build interactive features.
+         The move parameter comes from the onclick attribute in the HTML.
+        */
         function result(move){
             document.querySelector('.js-result').innerHTML = `you choose ${move}`
         }
-        console.log(document.querySelector('button'));
+
+        /*
+         querySelector('button') with just a TAG NAME returns the FIRST matching element.
+         Even though there are 4 buttons on the page, this only gets the first one (9a).
+         To get a specific one, use a class selector like '.second-button'.
+        */
+        console.log(document.querySelector('button'));   // Gets the first <button> (9a)
+
+        // Using a CLASS selector to target the specific button and change its text
         document.querySelector('.second-button').innerHTML = '9b - done!';
     </script>
 </body>

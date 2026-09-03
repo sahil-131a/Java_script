@@ -7,17 +7,45 @@
 </head>
 <body>
     <script>
+        /*
+         CONCEPT: FUNCTIONS IN JAVASCRIPT
+         - A function is a REUSABLE BLOCK OF CODE that performs a specific task.
+         - Functions help avoid code duplication (DRY principle: Don't Repeat Yourself).
+
+         FUNCTION DECLARATION:
+           function functionName() {
+               // code to execute
+           }
+         - Calling a function: functionName() — the () tells JS to EXECUTE it.
+         - Without (), you're just referencing the function itself, not running it.
+
+         RETURN VALUES:
+         - A function can RETURN a value using the 'return' keyword.
+         - The returned value replaces the function call wherever it's used.
+         - After 'return' executes, the function STOPS — no code after it runs.
+         - If no return statement, the function returns 'undefined' by default.
+
+         PARAMETERS & ARGUMENTS:
+         - Parameters are PLACEHOLDERS defined in the function declaration.
+         - Arguments are the ACTUAL VALUES passed when calling the function.
+           function greet(name) ← 'name' is a PARAMETER
+           greet("Sahil")      ← "Sahil" is an ARGUMENT
+        */
+
+        // Function with a return value
         function function1(){
-            console.log("hello");
-
-            return 1;
+            console.log("hello");   // This runs first
+            return 1;               // Then returns 1 and stops
         }
-        console.log(function1());
+        // console.log receives the RETURNED value (1) and logs it
+        console.log(function1());   // Logs: "hello" then 1
 
+        // Function with a parameter — calculates 10% tax on any cost
         function taxCalculator(parameter){
-            console.log(parameter*.1);
+            console.log(parameter*.1);  // parameter * 0.1 = 10% of the value
         }
         
+        // Calling with argument 200 → calculates 10% of 200 = 20
         taxCalculator(200);
     </script>
 

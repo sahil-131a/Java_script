@@ -4,6 +4,16 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
+    <!--
+     CONCEPT: RPS WITH DOM UPDATES (instead of alert())
+     - Previous version used alert() for output — blocks the page and looks ugly.
+     - This version uses DOM manipulation to display results INSIDE the page.
+     - We create dedicated <p> elements with class names for JS to target.
+     - This is a major upgrade: the UI feels more like a real app.
+     - NEW: updateScore() function — a separate function to update the score display.
+       This follows the "separation of concerns" principle: one function per task.
+    -->
+
     <p>Rock Paper Scissors</p>
     <button onclick="
       playgame('rock');
@@ -16,9 +26,11 @@
     <button onclick="
       playgame('scissors');
     ">Scissors</button>
-    <p class="js-result"></p>
-    <p class="js-moves"></p>
-    <p class="js-score"></p>
+
+    <!-- These empty <p> elements are PLACEHOLDERS — JS will fill them with content -->
+    <p class="js-result"></p>   <!-- Shows: "You win." / "You lose." / "Tie." -->
+    <p class="js-moves"></p>    <!-- Shows: which moves were played -->
+    <p class="js-score"></p>    <!-- Shows: running score -->
 
     <button onclick="
       score.win = 0;
@@ -30,12 +42,14 @@
 
 
     <script>
+      // Load saved score from localStorage, or use defaults if nothing saved
       let score = JSON.parse(localStorage.getItem('score')) || {
         win: 0,
         lose:0,
         tie:0
       };
 
+      // Display the score on page load (not just after a game)
       updateScore();
 
       
@@ -79,16 +93,35 @@
         }
 
         localStorage.setItem('score' , JSON.stringify(score));
+
+        /*
+         CONCEPT: UPDATING THE DOM INSTEAD OF USING alert()
+         - querySelector('.js-result').innerHTML = result → puts the result text IN the page.
+         - This is better than alert() because:
+           1. The page stays interactive (alert blocks everything)
+           2. The result is visible alongside the rest of the page
+           3. It looks like a real web app, not a popup
+        */
         document.querySelector('.js-result').innerHTML = result;
         document.querySelector('.js-moves').innerHTML = `you ${playermove}-${computerMove} computer`
-        updateScore();
+        updateScore();  // Re-render the score display
 
       }
       
+      /*
+       updateScore() — a dedicated function to update the score display.
+       CONCEPT: Separating display logic from game logic.
+       This function can be called from MULTIPLE places:
+       - After each game round
+       - After resetting the score
+       - On page load
+       Having one function prevents duplicating the DOM update code.
+      */
       function updateScore(){
         document.querySelector('.js-score')
           .innerHTML = `Win: ${score.win}, Lose: ${score.lose}, Tie: ${score.tie}`;
       }
+
       function pickComputerMove(){
         const randomNumber = Math.random();
 
